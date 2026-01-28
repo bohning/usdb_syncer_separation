@@ -1,0 +1,26 @@
+[project]
+name = "usdb-syncer-separation"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "randompersona1", email = "74961116+randompersona1@users.noreply.github.com" }
+]
+requires-python = ">=3.11, <3.12"
+dependencies = [
+]
+
+[project.scripts]
+usdb-syncer-separation = "usdb_syncer_separation:main"
+
+[build-system]
+requires = ["uv_build>=0.9.3,<0.10.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+bundle = [
+    "pyinstaller>=6.18.0",
+]
+dev = [
+    "ruff>=0.14.14",
+]
