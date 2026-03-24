@@ -1,7 +1,8 @@
 Specification for USDB Syncer Separation
 
-
 # Overview
+
+Version: 1
 
 This specification describes an interface for a binary to communicate with the main USDB Syncer.
 
@@ -17,23 +18,48 @@ The binary must implement the following methods:
 
 ## `get_spec_version`
 
-Returns the version of this specification. The syncer will use this to determine if it can communicate with the binary.
+The version of this specification. The syncer will use this to determine if it can communicate with the binary.
+
+
+## `exit`
+
+Exit cleanly.
+
+### Returns
+
+- `version` (string): The version of this specification.
 
 ## `get_name`
 
-Returns the name of the binary.
+The name of the binary, to be displayed for UI purposes.
+
+### Returns
+
+- `name` (string): The name of the binary.
 
 ## `get_available_models`
 
-Returns a list of available models.
+A list of available models to use for separation. Displayed in returned order. Default is first in list.
+
+### Returns
+
+- `models` (list of strings): The list of available models.
 
 ## `get_version`
 
 Returns the version of the binary.
 
+### Returns
+
+- `version` (string): The version of the binary.
+
 ## `is_gpu_accelerated`
 
-Returns whether the binary is GPU accelerated.
+Whether the binary is GPU accelerated, for display/debug purposes. Should be computed on the fly based on available hardware.
+
+### Returns
+
+- `is_gpu_accelerated` (boolean): Whether the binary is GPU accelerated.
 
 ## `split`
 

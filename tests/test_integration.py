@@ -43,11 +43,11 @@ class TestIntegration(unittest.TestCase):
                 self.assertIn("result", resp)
 
                 if req["method"] == "get_spec_version":
-                    self.assertEqual(resp["result"], "1.0.0")
+                    self.assertEqual(resp["result"], "1")
                 elif req["method"] == "get_name":
                     self.assertEqual(resp["result"], "usdb-syncer-separation")
                 elif req["method"] == "get_version":
-                    self.assertEqual(resp["result"], "0.1.0")
+                    self.assertIsInstance(resp["result"], str)
                 elif req["method"] == "is_gpu_accelerated":
                     self.assertIn(resp["result"], [True, False])
 

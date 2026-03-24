@@ -14,7 +14,12 @@ MODELS = ["htdemucs", "htdemucs_ft"]
 
 @rpc_server.register("get_spec_version")
 async def get_spec_version(_params: Any) -> str:
-    return "1.0.0"
+    return "1"
+
+
+@rpc_server.register("exit")
+async def exit_(_params: Any) -> None:
+    raise SystemExit(0)
 
 
 @rpc_server.register("get_name")
