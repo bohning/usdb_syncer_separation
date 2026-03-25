@@ -10,7 +10,7 @@ This specification describes an interface for a binary to communicate with the m
 
 The syncer calls the binary on a separate thread. It communicates via stdin/stdout.
 
-The main communication method is [JSON-RPC](https://www.jsonrpc.org/) 2.0 with line-delimited JSON messages. The binary must act as the JSON-RPC server. The syncer will act as the client.
+The communication method is [JSON-RPC](https://www.jsonrpc.org/) 2.0 with line-delimited JSON messages. The binary must act as the JSON-RPC server. The syncer will act as the client.
 
 # Methods
 
@@ -20,14 +20,13 @@ The binary must implement the following methods:
 
 The version of this specification. The syncer will use this to determine if it can communicate with the binary.
 
+### Returns
+
+- `version` (string): The version of this specification.
 
 ## `exit`
 
 Exit cleanly.
-
-### Returns
-
-- `version` (string): The version of this specification.
 
 ## `get_name`
 

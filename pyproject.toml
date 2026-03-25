@@ -12,20 +12,35 @@ dependencies = [
     "numpy<2",
     "setuptools",
     "soundfile",
+]
+
+[project.optional-dependencies]
+cpu = [
     "torch>=2.0.1",
     "torchaudio>=2.0.2",
+]
+cuda121 = [
+    "torch>=2.0.1",
+    "torchaudio>=2.0.2",
+]
+
+[tool.uv]
+conflicts = [
+  [
+    { extra = "cpu" },
+    { extra = "cuda121" },
+  ],
 ]
 
 [tool.uv.sources]
 demucs = { git = "https://github.com/adefossez/demucs", rev = "b9ab48cad45976ba42b2ff17b229c071f0df9390" }
 torch = [
-  { index = "pytorch-cu121", marker = "platform_system != 'Darwin'"},
-]
-torchvision = [
-  { index = "pytorch-cu121", marker = "platform_system != 'Darwin'"},
+  { index = "pytorch-cpu", extra = "cpu" },
+  { index = "pytorch-cu121", extra = "cuda121" },
 ]
 torchaudio = [
-  { index = "pytorch-cu121", marker = "platform_system != 'Darwin'"},
+  { index = "pytorch-cpu", extra = "cpu" },
+  { index = "pytorch-cu121", extra = "cuda121" },
 ]
 
 [project.scripts]
@@ -36,13 +51,16 @@ requires = ["uv_build>=0.9.3,<0.10.0"]
 build-backend = "uv_build"
 
 [dependency-groups]
-bundle = [
-    "pyinstaller>=6.18.0",
-]
 dev = [
     "mypy>=1.19.1",
+    "pyinstaller>=6.19.0",
     "ruff>=0.14.14",
 ]
+
+[[tool.uv.index]]
+name = "pytorch-cpu"
+url = "https://download.pytorch.org/whl/cpu"
+explicit = true
 
 [[tool.uv.index]]
 name = "pytorch-cu121"
