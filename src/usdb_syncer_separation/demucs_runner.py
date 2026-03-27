@@ -46,9 +46,9 @@ def separate_audio(
     # separate_audio_file standardizes to the samplerate of the separator
     samplerate = separator.samplerate
 
-    import torchaudio
+    import soundfile as sf
 
-    torchaudio.save(vocals_path, vocals_tensor, samplerate, backend="soundfile")
-    torchaudio.save(instrumental_path, instrumental_tensor, samplerate, backend="soundfile")
+    sf.write(vocals_path, vocals_tensor.cpu().numpy().T, samplerate)
+    sf.write(instrumental_path, instrumental_tensor.cpu().numpy().T, samplerate)
 
     return vocals_path, instrumental_path

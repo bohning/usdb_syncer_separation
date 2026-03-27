@@ -837,7 +837,7 @@ name = "triton"
 version = "2.1.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "filelock" },
+    { name = "filelock", marker = "(platform_machine != 'aarch64' and extra != 'extra-22-usdb-syncer-separation-cpu') or (platform_python_implementation != 'CPython' and extra != 'extra-22-usdb-syncer-separation-cpu') or (sys_platform != 'linux' and extra == 'extra-22-usdb-syncer-separation-cuda121') or (sys_platform != 'linux' and extra != 'extra-22-usdb-syncer-separation-cpu') or (extra == 'extra-22-usdb-syncer-separation-cpu' and extra == 'extra-22-usdb-syncer-separation-cuda121') or (extra != 'extra-22-usdb-syncer-separation-cpu' and extra != 'extra-22-usdb-syncer-separation-cuda121')" },
 ]
 wheels = [
     { url = "https://files.pythonhosted.org/packages/5c/c1/54fffb2eb13d293d9a429fead3646752ea190de0229bcf3d591ba2481263/triton-2.1.0-0-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.whl", hash = "sha256:919b06453f0033ea52c13eaf7833de0e57db3178d23d4e04f9fc71c4f2c32bf8", size = 89234153, upload-time = "2023-09-01T07:26:20.161Z" },
@@ -887,12 +887,12 @@ dev = [
 requires-dist = [
     { name = "demucs", git = "https://github.com/adefossez/demucs?rev=b9ab48cad45976ba42b2ff17b229c071f0df9390" },
     { name = "numpy", specifier = "<2" },
-    { name = "setuptools" },
+    { name = "setuptools", specifier = "<81" },
     { name = "soundfile" },
-    { name = "torch", marker = "extra == 'cpu'", specifier = ">=2.0.1", index = "https://download.pytorch.org/whl/cpu", conflict = { package = "usdb-syncer-separation", extra = "cpu" } },
-    { name = "torch", marker = "extra == 'cuda121'", specifier = ">=2.0.1", index = "https://download.pytorch.org/whl/cu121", conflict = { package = "usdb-syncer-separation", extra = "cuda121" } },
-    { name = "torchaudio", marker = "extra == 'cpu'", specifier = ">=2.0.2", index = "https://download.pytorch.org/whl/cpu", conflict = { package = "usdb-syncer-separation", extra = "cpu" } },
-    { name = "torchaudio", marker = "extra == 'cuda121'", specifier = ">=2.0.2", index = "https://download.pytorch.org/whl/cu121", conflict = { package = "usdb-syncer-separation", extra = "cuda121" } },
+    { name = "torch", marker = "extra == 'cpu'", specifier = ">=2.1.2", index = "https://download.pytorch.org/whl/cpu", conflict = { package = "usdb-syncer-separation", extra = "cpu" } },
+    { name = "torch", marker = "extra == 'cuda121'", specifier = ">=2.1.2", index = "https://download.pytorch.org/whl/cu121", conflict = { package = "usdb-syncer-separation", extra = "cuda121" } },
+    { name = "torchaudio", marker = "extra == 'cpu'", specifier = ">=2.1.2", index = "https://download.pytorch.org/whl/cpu", conflict = { package = "usdb-syncer-separation", extra = "cpu" } },
+    { name = "torchaudio", marker = "extra == 'cuda121'", specifier = ">=2.1.2", index = "https://download.pytorch.org/whl/cu121", conflict = { package = "usdb-syncer-separation", extra = "cuda121" } },
 ]
 provides-extras = ["cpu", "cuda121"]
 

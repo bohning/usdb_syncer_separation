@@ -16,12 +16,12 @@ dependencies = [
 
 [project.optional-dependencies]
 cpu = [
-    "torch>=2.0.1",
-    "torchaudio>=2.0.2",
+    "torch>=2.1.2",
+    "torchaudio>=2.1.2",
 ]
 cuda121 = [
-    "torch>=2.0.1",
-    "torchaudio>=2.0.2",
+    "torch>=2.1.2",
+    "torchaudio>=2.1.2",
 ]
 
 [tool.uv]
