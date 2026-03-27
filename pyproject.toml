@@ -10,7 +10,7 @@ requires-python = ">=3.11, <3.12"
 dependencies = [
     "demucs",
     "numpy<2",
-    "setuptools",
+    "setuptools<81",
     "soundfile",
 ]
 

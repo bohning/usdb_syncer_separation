@@ -9,7 +9,7 @@ class TestIntegration(unittest.TestCase):
     """Integration test cases for the usdb-syncer-separation server."""
 
     def setUp(self):
-        self.cmd = ["uv", "run", "usdb-syncer-separation"]
+        self.cmd = ["usdb-syncer-separation"]
 
     def test_basic_methods(self):
         # Spawn the process
@@ -28,6 +28,7 @@ class TestIntegration(unittest.TestCase):
                 {"jsonrpc": "2.0", "method": "get_name", "id": 2},
                 {"jsonrpc": "2.0", "method": "get_version", "id": 3},
                 {"jsonrpc": "2.0", "method": "is_gpu_accelerated", "id": 4},
+                {"jsonrpc": "2.0", "method": "get_available_models", "id": 5},
             ]
 
             for req in requests:
@@ -50,6 +51,8 @@ class TestIntegration(unittest.TestCase):
                     self.assertIsInstance(resp["result"], str)
                 elif req["method"] == "is_gpu_accelerated":
                     self.assertIn(resp["result"], [True, False])
+                elif req["method"] == "get_available_models":
+                    self.assertIsInstance(resp["result"], dict)
 
             proc.terminate()
             proc.wait(timeout=2)

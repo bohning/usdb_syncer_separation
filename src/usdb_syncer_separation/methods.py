@@ -9,7 +9,10 @@ from .server import INVALID_PARAMS, JsonRpcError, Server
 rpc_server = Server()
 
 
-MODELS = ["htdemucs", "htdemucs_ft"]
+MODELS = {
+    "htdemucs": "Hybrid Demucs (fast)",
+    "htdemucs_ft": "Hybrid Demucs (finetuned, bag of 4)",
+}
 
 
 @rpc_server.register("get_spec_version")
@@ -46,7 +49,7 @@ async def is_gpu_accelerated(_params: Any) -> bool:
 
 
 @rpc_server.register("get_available_models")
-async def get_available_models(_params: Any) -> list[str]:
+async def get_available_models(_params: Any) -> dict[str]:
     return MODELS
 
 

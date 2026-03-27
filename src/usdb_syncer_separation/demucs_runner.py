@@ -38,8 +38,8 @@ def separate_audio(
     instrumental_tensor = separated[other_keys[0]].clone()
     for k in other_keys[1:]:
         instrumental_tensor += separated[k]
-    Path(output_dir).mkdir(parents=True, exist_ok=True)
 
+    Path(output_dir).mkdir(parents=True, exist_ok=True)
     vocals_path = str(Path(output_dir) / "vocals.wav")
     instrumental_path = str(Path(output_dir) / "instrumental.wav")
 
@@ -48,7 +48,7 @@ def separate_audio(
 
     import torchaudio
 
-    torchaudio.save(vocals_path, vocals_tensor, samplerate)
-    torchaudio.save(instrumental_path, instrumental_tensor, samplerate)
+    torchaudio.save(vocals_path, vocals_tensor, samplerate, backend="soundfile")
+    torchaudio.save(instrumental_path, instrumental_tensor, samplerate, backend="soundfile")
 
     return vocals_path, instrumental_path
