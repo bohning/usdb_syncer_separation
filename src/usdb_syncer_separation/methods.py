@@ -49,7 +49,7 @@ async def is_gpu_accelerated(_params: Any) -> bool:
 
 
 @rpc_server.register("get_available_models")
-async def get_available_models(_params: Any) -> dict[str]:
+async def get_available_models(_params: Any) -> dict[str, str]:
     return MODELS
 
 
