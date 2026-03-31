@@ -8,9 +8,9 @@ This specification describes an interface for a separation provider to communica
 
 # Interface
 
-The syncer calls the provider on a separate thread. It communicates via stdin/stdout. The provider may use stderr to output log or other debugging information.
+The syncer calls the provider binary. It communicates via stdin/stdout. The provider may use stderr to output log or other debugging information.
 
-The communication method is [JSON-RPC](https://www.jsonrpc.org/) 2.0 with line-delimited JSON messages. The provider runs the JSON-RPC server. The syncer acts as the client.
+The communication method is [JSON-RPC](https://www.jsonrpc.org/) 2.0 with line-delimited JSON messages. The provider runs the JSON-RPC server. The syncer acts as the client. To implement this spec, the provider must implement _all_ methods described in the "Methods" section. The provider may implement additional methods for any reason, but the syncer will only call the specified methods.
 
 ## Error Handling
 
