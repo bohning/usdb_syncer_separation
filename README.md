@@ -8,8 +8,8 @@ This repository is a separation provider. It allows performing stem separation o
 
 1. [`uv`](https://docs.astral.sh/uv/) is required
 
-2. With CUDA:
-`uv run --extra cuda121 pyinstaller -n usdb_syncer_separation_cuda --collect-data demucs run.py`
+2. With CUDA 12.8 / RTX 5070 Ti support:
+`uv run --extra cuda128 pyinstaller -n usdb_syncer_separation_cuda --collect-data demucs run.py`
 
 3. CPU-only:
 `uv run --extra cpu pyinstaller -n usdb_syncer_separation_cpu --collect-data demucs run.py`
