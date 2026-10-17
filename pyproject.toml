@@ -8,7 +8,6 @@ authors = [
 ]
 requires-python = ">=3.11, <3.12"
 dependencies = [
-    "demucs",
     "numpy<2",
     "setuptools<81",
     "soundfile",
@@ -16,31 +15,33 @@ dependencies = [
 
 [project.optional-dependencies]
 cpu = [
-    "torch>=2.1.2",
-    "torchaudio>=2.1.2",
+    "demucs>=4.1.0",
+    "torch>=2.7.1",
+    "torchaudio>=2.7.1",
 ]
-cuda121 = [
-    "torch>=2.1.2",
-    "torchaudio>=2.1.2",
+cuda128 = [
+    "demucs>=4.1.0",
+    "torch>=2.7.1",
+    "torchaudio>=2.7.1",
 ]
 
 [tool.uv]
+environments = ["sys_platform == 'win32'"]
 conflicts = [
   [
     { extra = "cpu" },
-    { extra = "cuda121" },
+    { extra = "cuda128" },
   ],
 ]
 
 [tool.uv.sources]
-demucs = { git = "https://github.com/adefossez/demucs", rev = "b9ab48cad45976ba42b2ff17b229c071f0df9390" }
 torch = [
   { index = "pytorch-cpu", extra = "cpu" },
-  { index = "pytorch-cu121", extra = "cuda121" },
+  { index = "pytorch-cu128", extra = "cuda128" },
 ]
 torchaudio = [
   { index = "pytorch-cpu", extra = "cpu" },
-  { index = "pytorch-cu121", extra = "cuda121" },
+  { index = "pytorch-cu128", extra = "cuda128" },
 ]
 
 [project.scripts]
@@ -63,8 +64,8 @@ url = "https://download.pytorch.org/whl/cpu"
 explicit = true
 
 [[tool.uv.index]]
-name = "pytorch-cu121"
-url = "https://download.pytorch.org/whl/cu121"
+name = "pytorch-cu128"
+url = "https://download.pytorch.org/whl/cu128"
 explicit = true
 
 
